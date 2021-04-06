@@ -74,9 +74,9 @@ function toggleParticipants() {
 // Get the modal
 var modal = document.getElementById("myModal");
 let u_name = document.getElementById('u_name');
-if(u_name.value == '' || u_name.value == null) {
-  modal.style.display = "block";
-}
+// if(u_name.value == '' || u_name.value == null) {
+//   modal.style.display = "block";
+// }
 
 const guestName = () => {
   if(document.getElementById('guestName').value == "" || document.getElementById('guestName').value == null){
