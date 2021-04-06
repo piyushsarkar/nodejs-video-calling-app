@@ -1,7 +1,7 @@
-// const scrollToBottom = () => {
-//   var d = $('.main__chat_window');
-//   d.scrollTop(d.prop('scrollHeight'));
-// };
+const scrollToBottom = () => {
+  var d = document.getElementById('messages');
+  d.scrollIntoView(false);
+};
 
 const muteUnmute = () => {
   const enabled = myVideoStream.getAudioTracks()[0].enabled;
@@ -90,7 +90,7 @@ const guestName = () => {
 
 
 const addNewUserName = (name) => {
-  console.log(name);
+  if(name==null || name == '') name = "Guest";
   let participants = document.getElementById('p_list');
   participants.innerHTML += `<div class="participant"><img class="participant__img" src="/icons/user.svg" alt="" /><span class="participant__name">${name}</span></div>`
 }

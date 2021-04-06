@@ -23,6 +23,7 @@ navigator.mediaDevices
   .then((stream) => {
     myVideoStream = stream;
     addMyVideoStream(myVideo, stream);
+    addNewUserName(u_name.value);
 
     // 3. Waiting and Manage call stream
     peer.on('call', (call) => {
@@ -56,7 +57,7 @@ navigator.mediaDevices
     });
 
     socket.on('createMessage', (message, userName) => {
-      all_messages.innerHTML += `<li class="message"><b>${userName}</b><br/>${message}</li>`;
+      all_messages.innerHTML += `<li class="message"><b class="name">${userName}</b>${message}</li>`;
       scrollToBottom();
     });
   });
