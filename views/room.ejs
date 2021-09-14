@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Calling app</title>
+    <script> const ROOM_ID = '<%= roomId %>';</script>
+    <input id="u_name" type="hidden" value="<%= name %>">
+    <link href="/css/video.min.css" rel="stylesheet" type="text/css" />
+    <script defer src="/script/peerjs@1.3.1/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script/connection.js" defer></script>
+    <script src="/script/functionality.js" defer></script>
+  </head>
+  <body>
+    <div class="main">
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div>Enter your name to continue</div>
+          <div>
+            <input id="guestName" type="text" placeholder="Enter Your Name">
+            <button onclick="guestName()">Continue</button>
+          </div>
+        </div>
+      
+      </div>
+      <div class="main__video_container">
+        <div id="video-grid">
+          <!-- <div class="video-container"><video style="background: white; border: 1px solid blanchedalmond;"></video></div> -->
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="my_video">
+        <div id="my-video-grid"></div>
+      </div>
+      <div class="controls">
+        <div class="controls__left">
+          <button id="playStop" class="button button-primary video-on"  onclick="playStop()">
+          </button>
+          <button id="muteUnmute" class="button button-primary mic-on" onclick="muteUnmute()">
+          </button>
+          <button style="display:none" class="button button-primary" onclick="shareScreen()">
+            <img src="/icons/room/share.svg" alt="" class="button__icon" />
+          </button>
+        </div>
+        <div class="controls__right">
+          <button class="button button-primary" onclick="toggleOptions()">
+            <img src="/icons/room/options.svg" alt="" class="button__icon" />
+          </button>
+          <div class="popup popup-options" id="options_section">
+            <div class="popup-options__header">
+              <h4>Setting</h4>
+            </div>
+            <div class="popup-options__setting">
+              <button class="popup-options__setting__button" onclick="muteEveryone()">Mute Everyone</button>
+            </div>
+          </div>
+          <button class="button button-primary" onclick="toggleParticipants()">
+            <img
+              src="/icons/room/participants.svg"
+              alt=""
+              class="button__icon"
+            />
+          </button>
+          <div id="participants" class="participants-sidebar">
+            <div class="participants-sidebar__header">
+              <h4>Participants</h4>
+            </div>
+            <a
+              href="javascript:void(0)"
+              class="closebtn"
+              onclick="toggleParticipants()"
+              >&times;</a
+            >
+            <div class="participants-sidebar__list" id="p_list">
+            </div>
+          </div>
+          <button class="button button-primary" onclick="toggleChat()">
+            <img
+              src="/icons/room/chat-unopen.svg"
+              alt=""
+              class="button__icon"
+            />
+          </button>
+          <div class="popup popup-chat" id="chat_section">
+            <div class="popup-chat__header">
+              <h4>Chat</h4>
+            </div>
+            <div class="popup-chat__chats">
+              <ul id="messages"></ul>
+            </div>
+            <div class="popup-chat__input">
+              <input
+                id="chat_message"
+                type="text"
+                placeholder="Type message here..."
+                autocomplete="off"
+              />
+              <button class="popup-chat__input__send" id="send_message">
+                <img src="/icons/room/send.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/script/gridLayout.js"></script>
+</html>
